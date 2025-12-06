@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Başabaş Noktası Analiz Aracı</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .calculator-card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 350px; }
+        h2 { text-align: center; color: #1a237e; margin-bottom: 20px; font-size: 1.5rem; }
+        .input-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; color: #555; font-weight: 600; font-size: 0.9rem; }
+        input { width: 100%; padding: 10px; border: 2px solid #e0e0e0; border-radius: 8px; box-sizing: border-box; font-size: 1rem; transition: 0.3s; }
+        input:focus { border-color: #3949ab; outline: none; }
+        button { width: 100%; background: #3949ab; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: bold; transition: 0.3s; margin-top: 10px; }
+        button:hover { background: #283593; }
+        #result { margin-top: 20px; padding: 15px; background: #e8eaf6; border-radius: 8px; text-align: center; display: none; }
+        .result-title { font-size: 0.85rem; color: #7986cb; text-transform: uppercase; letter-spacing: 1px; }
+        .result-value { font-size: 1.8rem; color: #1a237e; font-weight: bold; margin: 5px 0; }
+        .footer { text-align: center; margin-top: 20px; font-size: 0.7rem; color: #aaa; }
+    </style>
+</head>
+<body>
+
+    <div class="calculator-card">
+        <h2>📊 Kâr Analiz Aracı</h2>
+        
+        <div class="input-group">
+            <label>Sabit Giderler (TL)</label>
+            <input type="number" id="fixedCost" placeholder="Örn: 5000">
+        </div>
+
+        <div class="input-group">
+            <label>Birim Satış Fiyatı (TL)</label>
+            <input type="number" id="price" placeholder="Örn: 100">
+        </div>
+
+        <div class="input-group">
+            <label>Birim Değişken Gider (TL)</label>
+            <input type="number" id="variableCost" placeholder="Örn: 40">
+        </div>
+
+        <button onclick="calculate()">Hesapla</button>
+
+        <div id="result">
+            <div class="result-title">Başabaş Noktası (Adet)</div>
+            <div class="result-value" id="breakEvenPoint">-</div>
+            <p style="font-size: 0.8rem; color: #555;">Kâra geçmek için satılması gereken minimum miktar.</p>
+        </div>
+
+        <div class="footer">Developed by Kadir Ayık | YBS Projects</div>
+    </div>
+
+    <script>
+        function calculate() {
+            // Değerleri al
+            let fc = parseFloat(document.getElementById('fixedCost').value);
+            let p = parseFloat(document.getElementById('price').value);
+            let vc = parseFloat(document.getElementById('variableCost').value);
+
+            // Basit hata kontrolü
+            if (isNaN(fc) || isNaN(p) || isNaN(vc)) {
+                alert("Lütfen tüm alanları sayısal olarak doldurun!");
+                return;
+            }
+
+            if (p <= vc) {
+                alert("Satış fiyatı değişken giderden büyük olmalıdır!");
+                return;
+            }
+
+            // Formül: Sabit Gider / (Fiyat - Değişken Gider)
+            let result = fc / (p - vc);
+            
+            // Sonucu göster
+            document.getElementById('breakEvenPoint').innerText = Math.ceil(result) + " Adet";
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
