@@ -1,0 +1,86 @@
+/* Proje: Maliyet Analiz Aracı
+   Dosya: Tasarım Kodları (CSS)
+   Amaç: Temiz ve sade bir hesap makinesi görünümü
+*/
+
+/* --- Genel Sayfa Düzeni --- */
+body { 
+    font-family: 'Segoe UI', sans-serif; 
+    background-color: #f0f2f5; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    margin: 0; 
+}
+
+/* Hesap Makinesi Kartı */
+.calculator-card { 
+    background: white; 
+    padding: 30px; 
+    border-radius: 15px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+    width: 350px; 
+}
+
+h2 { 
+    text-align: center; 
+    color: #1a237e; 
+    margin-bottom: 20px; 
+    font-size: 1.5rem; 
+}
+
+/* Giriş Kutucukları */
+.input-group { margin-bottom: 15px; }
+
+label { 
+    display: block; 
+    margin-bottom: 5px; 
+    color: #555; 
+    font-weight: 600; 
+    font-size: 0.9rem; 
+}
+
+input { 
+    width: 100%; 
+    padding: 10px; 
+    border: 2px solid #e0e0e0; 
+    border-radius: 8px; 
+    box-sizing: border-box; 
+    font-size: 1rem; 
+    transition: 0.3s; 
+}
+
+input:focus { border-color: #3949ab; outline: none; }
+
+/* Hesapla Butonu */
+button { 
+    width: 100%; 
+    background: #3949ab; 
+    color: white; 
+    border: none; 
+    padding: 12px; 
+    border-radius: 8px; 
+    font-size: 1rem; 
+    cursor: pointer; 
+    font-weight: bold; 
+    transition: 0.3s; 
+    margin-top: 10px; 
+}
+
+button:hover { background: #283593; }
+
+/* Sonuç Alanı (Başlangıçta gizli) */
+#result { 
+    margin-top: 20px; 
+    padding: 15px; 
+    background: #e8eaf6; 
+    border-radius: 8px; 
+    text-align: center; 
+    display: none; 
+}
+
+.result-title { font-size: 0.85rem; color: #7986cb; text-transform: uppercase; letter-spacing: 1px; }
+.result-value { font-size: 1.8rem; color: #1a237e; font-weight: bold; margin: 5px 0; }
+
+.footer { text-align: center; margin-top: 20px; font-size: 0.7rem; color: #aaa; }
